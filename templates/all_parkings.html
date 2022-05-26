@@ -1,0 +1,55 @@
+{% block body %}
+  <h1>All parkings</h1>
+  <div>
+    <script
+    src="https://maps.googleapis.com/maps/api/js?key=api_key&callback=initMap" type="text/javascript"></script>
+    <script>
+    let mp;
+    function initMap() {
+    const location = { lat:37.77986, lng:-122.42905};
+    map = new google.maps.Map(document.getElementById("map"), {
+    zoom: 12,
+    center: location,
+  });
+  }
+  function AddMarker(lat, lon){
+    let marker = new google.maps.Marker({
+    map: map,
+    title: "map"
+  });
+    return marker;
+  }
+</script>
+<ul>
+
+    {% for parking in parkings %}
+
+    <li>
+        <a href="/parkings/ {{ parking.parking_id }}">
+          {{parking.st_name}}
+          {{ parking.cnn }}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+  <ul>
+</div>
+  <h1>All coordinates</h1>
+    {% for spots in coordinates %}
+    {% for coordinate in spots %}
+      <li>
+          <script>AddMarker({{ coordinate.lat }},{{ coordinate.lon }});</script>
+          {{ coordinate.lon }}
+          {{ coordinate.lat }}
+        </a>
+      </li>
+      {% endfor %}
+    {% endfor %}
+  </ul>
+  <link rel="stylesheet" type="text/css" href="/static/style.css" />
+</head>
+<body>
+  <h3>My Google Maps Demo</h3>
+  <!--The div element for the map -->
+  <div id="map"></div>
+{% endblock %}

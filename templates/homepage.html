@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %} Free Parking Search{% endblock %}
+
+{% block body %}
+  <h1>Welcome!</h1>
+
+  <h2>Free Parking Search</h2>
+  <ul>
+    <li><a href="/parkings">View all parkings</a></li>
+    <li><a href="/coordinates">View all coordinates</a></li>
+  </ul>
+  <form action="/search"> Search For Parking
+      <input type="text" name="street_name">
+      <button>search</button>
+  </form>
+{% endblock %}
