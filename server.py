@@ -66,8 +66,10 @@ def search():
         model.db.session.commit()
     filter = Parking.query.filter_by(st_name=street_name).all()
     coordinates = [parking_spot.coordinates for parking_spot in filter]
+    # for coordinate in coordinates: 
+    #     for spot in coordinate:
+    #         print("LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL", spot)
 
-    # print("LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL", coordinates)
     return render_template("all_parkings.html", parkings=filter, coordinates=coordinates)
            
 @app.route("/parkings")
