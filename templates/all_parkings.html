@@ -1,5 +1,9 @@
 <!doctype html>
 <link rel="stylesheet" type="text/css" href="/static/style.css" />
+<script > var coords = "{{ myLatLng|tojson|safe }}";</script>
+
+<script  src="/static/maps.js" > </script>
+
 {% block body %}
   <h1>All parkings</h1>
   <ul>
@@ -14,32 +18,14 @@
   </ul>
     <body>
     <h1>Google Maps</h3>
-    <div id="map"></div> 
-      <script>
-        function initMap() {
-          var options = {
-            center:{lat: 37.77986, lng:-122.42905},
-            zoom: 12
-          }
-          var map = new google.maps.Map(document.getElementById("map"), options);
-          function addMarker(lon, lat) {
-            var marker = new google.maps.Marker({
-              position: lon, lat,
-              map: map,
-              title: "map",
-            });
-          return marker;
-        }
-      }
-    </script>
-    {% for coordinate in coordinates %}
+    <div id="map"></div>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDCLPu50m8qU4eQpqj7rm8U7i1gTa-s5TY&callback=initMap"></script>
+   {% for coordinate in coordinates %}
     {% for spot in coordinate %}
-      <li>{{ spot.lat }}</li>
-      {{ spot.lon }}
-      <script>addMarker({{spot.lon}}, {{spot.lat}});</script>
-    {% endfor %}
+        <li> {{ spot.lon }}, {{ spot.lat }}</li>
+        {% endfor %}
     {% endfor %}
 
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDCLPu50m8qU4eQpqj7rm8U7i1gTa-s5TY&callback=initMap" type="text/javascript"></script>
+
   </body>
 {% endblock %}

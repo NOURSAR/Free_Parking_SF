@@ -9,7 +9,6 @@ import pprint
 
 from flask import (Flask, render_template, request, flash, session, redirect)
 # from model import connect_to_db, db
-import os
 import json
 import crud
 
@@ -66,11 +65,15 @@ def search():
         model.db.session.commit()
     filter = Parking.query.filter_by(st_name=street_name).all()
     coordinates = [parking_spot.coordinates for parking_spot in filter]
-    # for coordinate in coordinates: 
-    #     for spot in coordinate:
-    #         print("LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL", spot)
+    myLatLng =[]
+    for coordinate in coordinates: 
+        for spot in coordinate:
+            # print("LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL", spot.lat)
+            latLng=[spot.lat, spot.lon]
+            myLatLng.append(latLng)
+    print(myLatLng)
 
-    return render_template("all_parkings.html", parkings=filter, coordinates=coordinates)
+    return render_template("all_parkings.html", parkings=filter, coordinates=coordinates, myLatLng=myLatLng)
            
 @app.route("/parkings")
 def all_parkings():
@@ -110,3 +113,5 @@ if __name__ == "__main__":
         use_reloader=True,
         use_debugger=True,
     )
+
+    # kill -9 $(ps -A | grep python | awk '{print $1}')
