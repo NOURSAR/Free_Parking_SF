@@ -11,7 +11,7 @@ from flask import (Flask, render_template, request, flash, session, redirect)
 # from model import connect_to_db, db
 import json
 import crud
-
+import pprint
 import requests
 # os.system('dropdb onstreetparking')
 
@@ -42,6 +42,7 @@ def search():
         payload={"st_name": street_name}
         response = requests.get('https://data.sfgov.org/resource/9ivs-nf5y.json?', params=payload)
         res=response.json()
+        pprint.pprint("LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL", res)
         print(street_name, "is not in database")
         for parking in res:
             st_name, cnn, st_type, district, prkg_sply, collectn, year =(
