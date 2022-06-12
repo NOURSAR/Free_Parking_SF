@@ -2,15 +2,39 @@
 {% block title %} Free Parking Search{% endblock %}
 
 {% block body %}
-  <h1>Welcome!</h1>
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Google Maps Parking</title>
+	<link rel="stylesheet" href="static/style.css">
 
-  <h2>Free Parking Search</h2>
-  <ul>
-    <li><a href="/parkings">View all parkings</a></li>
-    <li><a href="/coordinates">View all coordinates</a></li>
-  </ul>
-  <form action="/search"> Search For Parking
-      <input type="text" name="street_name">
-      <button>search</button>
-  </form>
+</head>
+<body>
+<a class= "login" href = '/login-page'>Login</a>
+
+<form id = "add" method="POST" action="/add">
+  <input  type="text"name ="street" placeholder="Street">
+  <input  type="text" name="lat" placeholder="lat">
+  <input  type="text" name="lng"placeholder="lng" >
+  <div id="info">info </div>
+</form>
+
+<button form= "add" type="add" >submit</button>
+
+<form id="review" method="POST" action="/review">
+  <input type="text" name="rev" placeholder="review">
+</form>
+
+<button id="review" type="review">review</button>
+
+<div id="map"></div>
+<script src="/static/maps.js"></script>
+
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDCLPu50m8qU4eQpqj7rm8U7i1gTa-s5TY&libraries=places&callback=initMap"></script>
+</body>
+</html>
 {% endblock %}

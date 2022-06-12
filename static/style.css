@@ -1,8 +1,21 @@
-/* Set the size of the div element that contains the map */
+html, body, #map {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
 #map {
-    height: 400px;
-    /* The height is 400 pixels */
-    width: 100%;
-    /* The width is the width of the web page */
-  }
-  
+	height: 75%;
+	width: 75%;
+}
+
+label {
+	padding: 0px 10px;
+	display: inline-block;
+	font-size: 1.5em;
+}
+
+input {
+	font-size: 0.70em;
+	padding: 9px;
+}

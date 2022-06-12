@@ -7,12 +7,21 @@
     <title>
       {% block title %}{% endblock %}
     </title>
-
     {% block head %}{% endblock %}
   </head>
   <body>
-    {% block body %}{% endblock %}
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <div class=flashes>
+      {% for message in messages %}
+      {{ message }}
+      {% endfor %}
+      </div>
+    {% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+    {% block body %} {% endblock %}
 
-    {% block after_body %}{% endblock %}
   </body>
+
 </html>
