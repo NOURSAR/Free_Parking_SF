@@ -1,31 +1,15 @@
 <!doctype html>
 <link rel="stylesheet" type="text/css" href="/static/style.css" />
-<script > var coords = "{{ myLatLng|tojson|safe }}";</script>
+<script > var coords = "{{ st_name|tojson|safe }}";</script>
 
 <script  src="/static/maps.js" > </script>
 
 {% block body %}
   <h1>All parkings</h1>
-  <ul>
-    {% for parking in parkings %}
-    <li>
-        <a href="/parkings/ {{ parking.parking_id }}">
-          {{parking.st_name}}
-          {{ parking.cnn }}
-        </a>
-      </li>
-    {% endfor %}
-  </ul>
     <body>
     <h1>Google Maps</h3>
     <div id="map"></div>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDCLPu50m8qU4eQpqj7rm8U7i1gTa-s5TY&callback=initMap"></script>
-   {% for coordinate in coordinates %}
-    {% for spot in coordinate %}
-        <li> {{ spot.lon }}, {{ spot.lat }}</li>
-        {% endfor %}
-    {% endfor %}
-
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDCLPu50m8qU4eQpqj7rm8U7i1gTa-s5TY&libraries=places&callback=initMap"></script>
 
   </body>
 {% endblock %}

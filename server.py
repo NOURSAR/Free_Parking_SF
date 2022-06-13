@@ -29,28 +29,41 @@ login_manager.login_view = '/login_page'
 def homepage():
     return render_template('homepage.html')
 
-@app.route('/add', methods = ['GET', 'POST'])
+@app.route('/search-parking')
+def search_parking():
+    search= request.form.get('search')
+
+    stname = Parking.query.filter_by(st_name=search).all()
+
+    if stname is not None:
+        print("parking is in database")
+        return render_template('all_parkings.html') 
+
+    return redirect('/add-parking')
+
+@app.route('/add-parking', methods = ['GET', 'POST'])
 def add_parking():
     lat= request.form.get('lat')
     lng= request.form.get('lng')
     st_name= request.form.get('street')
-    filter1 = Parking.query.filter_by(st_name=st_name).all()
-    filter2 = Parking.query.filter_by(longtitude=lng).all()
-    print(filter1)
-    print(filter2)
-    filter3 = Parking.query.filter_by(latitude=lat).all()
-    print(filter3)
-    if filter2 or filter3 is not None:
-        print(" parkinig spot already exists")
-        return redirect("/")
-    else:
-        print(lat, lng, st_name)
-        print("parking is not in database")
-        parking = crud.create_parking(st_name=st_name, longtitude=lat, latitude=lng)
-        print(parking.st_name)
 
-        return  f"{lat} {lng} {st_name}"
-# @app.route('/review', methods = ['GET', 'POST'])
+    # filter1 = Parking.query.filter_by(st_name=st_name).all()
+    filter2 = Parking.query.filter_by(longtitude=lng).first()
+    filter3 = Parking.query.filter_by(latitude=lat).first()
+    if filter2 and filter3 is not None:
+        print(" parkinig spot already exists")
+        return render_template("all_parkings.html")
+    else: 
+        print("parking is not in database")
+        print(lat, lng, st_name)
+        if "email" in session:
+            parking = crud.create_parking(st_name=st_name, longtitude=lat, latitude=lng)
+            print(parking.st_name)
+            return  f"{lat} {lng} {st_name}" #temporary
+            # return redirect("/add-review")
+        else:
+           return render_template('login_page.html')
+# @app.route('/add-review', methods = ['GET', 'POST'])
 # def add_review():
 #     # user = crud.get_user_by_id(id)
 #     # parking= crud.get_parking_by_parking_id(parking_id)
@@ -94,6 +107,8 @@ def login():
         
     email = request.form.get('email')
     password = request.form.get('password')
+    session['email'] = email    #adding user to the session
+
 
     user = crud.get_user_by_email(email)
     print("**********")

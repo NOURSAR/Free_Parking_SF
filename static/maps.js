@@ -28,6 +28,7 @@ function initMap() {
        google.maps.event.addListener(marker, 'dragend', function(){
           lat = marker.getPosition().lat();
           lng = marker.getPosition().lng();
+          
           // $('#lat').val(lat); //Not working why??
           // $('#lng').val(lng); 
           console.log(lat, lng);
