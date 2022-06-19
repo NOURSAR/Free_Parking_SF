@@ -4,7 +4,15 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <a class= "logout" href = '/logout'>Logout</a>
+    <div class="login">
+      {% if current_user.is_anonymous %}
+        <a class="nav-link" href="/login-page">Log In or Create Account</a>
+      {% else %}
+        Welcome, {{ current_user.email }}!
+        <a class="nav-link" href="/logout">Log Out</a>
+      {% endif %}
+    </div>
+
     <title>
       {% block title %}{% endblock %}
     </title>

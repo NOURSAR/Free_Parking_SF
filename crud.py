@@ -2,10 +2,10 @@ from model import db, Parking, User, Review, connect_to_db
 
 
 
-def create_parking(st_name, longtitude, latitude):
+def create_parking(st_name, longtitude, latitude, cross_st_1, cross_st_2):
     """ Create and return a parking"""
 
-    parking= Parking(st_name=st_name, longtitude=longtitude,latitude=latitude)
+    parking= Parking(st_name=st_name, longtitude=longtitude,latitude=latitude, cross_st_1=cross_st_1, cross_st_2=cross_st_2)
 
     db.session.add(parking)
     db.session.commit()

@@ -1,15 +1,31 @@
 <!doctype html>
 <link rel="stylesheet" type="text/css" href="/static/style.css" />
-<script > var coords = "{{ st_name|tojson|safe }}";</script>
+<script > var coords = "{{ list_of_coords|tojson|safe }}";</script>
+<a href="/add-review"></a>
 
-<script  src="/static/maps.js" > </script>
+<form id="addreview" method="POST" action="/add-review">
+  <select name="parking_id" id="parking_id">
+  {% for stname in all_parkings_stname %}
+<option value='{{stname.parking_id}}'>{{ stname.parking_id }} {{ stname.st_name }} {{stname.latitude}} {{stname.longtitude}}</option>
+
+    {% endfor %}
+  </select>
+
+  <input type="text" name="rev" placeholder="add review">
+</form>
+<button form="addreview" type="submit">review</button>
+{{ list_of_coords }}
+
+
+<script  src="/static/maps2.js" > </script>
 
 {% block body %}
   <h1>All parkings</h1>
     <body>
     <h1>Google Maps</h3>
+    <div id="info">info </div>
     <div id="map"></div>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDCLPu50m8qU4eQpqj7rm8U7i1gTa-s5TY&libraries=places&callback=initMap"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDCLPu50m8qU4eQpqj7rm8U7i1gTa-s5TY&libraries=places&libraries=geometry&callback=initMap"></script>
 
   </body>
 {% endblock %}

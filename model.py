@@ -12,9 +12,11 @@ class Parking(db.Model):
 
     parking_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     st_name = db.Column(db.String)
+    cross_st_1= db.Column(db.String)
+    cross_st_2 = db.Column(db.String)
     # address=db.Column(db.String)
-    longtitude=db.Column(db.Float)
-    latitude=db.Column(db.Float)
+    longtitude= db.Column(db.Float)
+    latitude= db.Column(db.Float)
 
     #reviews
 
