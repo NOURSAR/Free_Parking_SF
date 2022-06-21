@@ -6,13 +6,15 @@
     <meta name="viewport" content="width=device-width">
     <div class="login">
       {% if current_user.is_anonymous %}
-        <a class="nav-link" href="/login-page">Log In or Create Account</a>
+        <a class="nav-link" href="/login-page">Log In or Create Account</a><br>
       {% else %}
         Welcome, {{ current_user.email }}!
-        <a class="nav-link" href="/logout">Log Out</a>
+        <a class="nav-link" href="/logout">Log Out</a><br>
+        <a href="/add-parking"> Add Parking</a>
       {% endif %}
     </div>
-
+    <a href="/"> Search Parking</a>
+   
     <title>
       {% block title %}{% endblock %}
     </title>

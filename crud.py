@@ -5,7 +5,11 @@ from model import db, Parking, User, Review, connect_to_db
 def create_parking(st_name, longtitude, latitude, cross_st_1, cross_st_2):
     """ Create and return a parking"""
 
-    parking= Parking(st_name=st_name, longtitude=longtitude,latitude=latitude, cross_st_1=cross_st_1, cross_st_2=cross_st_2)
+    cross_streets = sorted([cross_st_1, cross_st_2])
+    cross_st1 = cross_streets[0]
+    cross_st2 = cross_streets[1]
+    
+    parking= Parking(st_name=st_name, longtitude=longtitude,latitude=latitude, cross_st_1=cross_st1, cross_st_2=cross_st2)
 
     db.session.add(parking)
     db.session.commit()

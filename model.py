@@ -11,12 +11,12 @@ class Parking(db.Model):
     __tablename__ = "parkings"
 
     parking_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    st_name = db.Column(db.String)
-    cross_st_1= db.Column(db.String)
-    cross_st_2 = db.Column(db.String)
+    st_name = db.Column(db.String, nullable=False)
+    cross_st_1= db.Column(db.String, nullable=False)
+    cross_st_2 = db.Column(db.String, nullable=False)
     # address=db.Column(db.String)
-    longtitude= db.Column(db.Float)
-    latitude= db.Column(db.Float)
+    longtitude= db.Column(db.Float, nullable=False)
+    latitude= db.Column(db.Float, nullable=False)
 
     #reviews
 
@@ -51,9 +51,9 @@ class Review(db.Model):
     __tablename__ = "reviews"
 
     review_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    parking_id = db.Column(db.Integer, db.ForeignKey("parkings.parking_id"))
-    id = db.Column(db.Integer, db.ForeignKey("users.id"))
-    review= db.Column(db.Text)
+    parking_id = db.Column(db.Integer, db.ForeignKey("parkings.parking_id"), nullable=False)
+    id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
+    review= db.Column(db.Text, nullable=False)
 
     parking = db.relationship("Parking", backref="reviews")
     user = db.relationship("User", backref="reviews")

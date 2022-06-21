@@ -1,13 +1,13 @@
 html, body, #map {
 	height: 100%;
-	margin: 0;
-	padding: 0;
+	margin: 1%;
+	padding: 1%;
 }
-
+/* 
 #map {
 	height: 75%;
 	width: 75%;
-}
+} */
 
 label {
 	padding: 0px 10px;

@@ -1,31 +1,38 @@
-<!doctype html>
+{% extends 'base.html' %}
+{% block head %}{% endblock %}
+{% block body %}
+
 <link rel="stylesheet" type="text/css" href="/static/style.css" />
 <script > var coords = "{{ list_of_coords|tojson|safe }}";</script>
-<a href="/add-review"></a>
 
 <form id="addreview" method="POST" action="/add-review">
   <select name="parking_id" id="parking_id">
   {% for stname in all_parkings_stname %}
-<option value='{{stname.parking_id}}'>{{ stname.parking_id }} {{ stname.st_name }} {{stname.latitude}} {{stname.longtitude}}</option>
-
+<option name='{{stname.latitude}}' value='{{stname.parking_id}}'> ID: {{ stname.parking_id }} -Name: {{ stname.st_name }} -Lat: {{stname.latitude}} -Lng: {{stname.longtitude}} -Cross-street1: {{stname.cross_st_1}} -Cross-street2: {{stname.cross_st_2}}</option>
     {% endfor %}
-  </select>
-
-  <input type="text" name="rev" placeholder="add review">
+  </select><br>
+  <input type="text" name="rev" placeholder="Type in a review" required>
 </form>
 <button form="addreview" type="submit">review</button>
-{{ list_of_coords }}
+<ol  name="review" id="review">
+{% for review in search_review %}
+  <li  value="{{review.parking_id}}" >{{review.parking_id}}, {{review.parking.st_name}} , {{review.review}} {{review.parking.latitude}} {{ review.parking.longtitude}}</li>
+{% endfor %}
+</ol>
+<script type="text/javascript" {{ url_for('static', filename='app.js')}}></script>
+<script type="text/javascript">
+   var myVar ='{{ list_of_objects|tojson|safe }}'
+</script>
 
 
 <script  src="/static/maps2.js" > </script>
 
-{% block body %}
   <h1>All parkings</h1>
     <body>
     <h1>Google Maps</h3>
     <div id="info">info </div>
     <div id="map"></div>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDCLPu50m8qU4eQpqj7rm8U7i1gTa-s5TY&libraries=places&libraries=geometry&callback=initMap"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDCLPu50m8qU4eQpqj7rm8U7i1gTa-s5TY&libraries=places&callback=initMap"></script>
 
   </body>
 {% endblock %}
