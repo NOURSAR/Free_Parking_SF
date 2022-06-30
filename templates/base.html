@@ -1,25 +1,38 @@
 <!doctype html>
 
 <html>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" type="text/css" href="/static/style.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+ 
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <div class="login">
-      {% if current_user.is_anonymous %}
-        <a class="nav-link" href="/login-page">Log In or Create Account</a><br>
-      {% else %}
-        Welcome, {{ current_user.email }}!
-        <a class="nav-link" href="/logout">Log Out</a><br>
-        <a href="/add-parking"> Add Parking</a>
-      {% endif %}
-    </div>
-    <a href="/"> Search Parking</a>
+    <nav class="navbar bg-light">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <img src="/static/car.gif" alt="" width="30" height="24" class="d-inline-block align-text-top">
+          Street Park SF
+        </a>
+      </div>
+    </nav>
    
+    <nav class="navbar">
+      <div class="container">
+        {% if current_user.is_anonymous %}
+      <button class="btn btn-warning"><a href="/login-page">Log In or Create Account</a></button><br>
+        {% else %}
+        Welcome, {{ current_user.email }}!
+        <button class="btn btn-warning"><a href="/logout">Log Out</a></button>
+        <button class="btn btn-primary"><a href="/add-parking">Add Parking</a></button>
+        {% endif %}
+        <button class="btn btn-outline-light"><a href="/">Search Parking</a></button>
+    </nav>
     <title>
       {% block title %}{% endblock %}
     </title>
     {% block head %}{% endblock %}
   </head>
+
   <body>
     {% with messages = get_flashed_messages() %}
     {% if messages %}
@@ -32,6 +45,8 @@
     {% endwith %}
     {% block content %}{% endblock %}
     {% block body %} {% endblock %}
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
 
   </body>
 

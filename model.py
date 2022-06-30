@@ -14,7 +14,7 @@ class Parking(db.Model):
     st_name = db.Column(db.String, nullable=False)
     cross_st_1= db.Column(db.String, nullable=False)
     cross_st_2 = db.Column(db.String, nullable=False)
-    # address=db.Column(db.String)
+    address=db.Column(db.String, nullable=False)
     longtitude= db.Column(db.Float, nullable=False)
     latitude= db.Column(db.Float, nullable=False)
 

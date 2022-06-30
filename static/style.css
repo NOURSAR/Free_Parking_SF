@@ -1,14 +1,43 @@
-html, body, #map {
+/* html {
 	height: 100%;
-	margin: 1%;
-	padding: 1%;
+	margin-top: 100%;
+	padding: 100%;
+	background-image: url("j.jpg");
+
+} */
+/* .header-container-fluid {
+    height: 50px;
+    max-width: 1010px;
+    margin: 0 auto;
 }
-/* 
-#map {
-	height: 75%;
-	width: 75%;
+.navbar-static-top {
+    margin: 0 auto;
+    border: none; */
+    /* width: 100%;
+    background-image: url(../images/header_bg.jpg);
+    background-repeat: repeat-x;
+    background-position: left top;
+    position: fixed;
+    top: 0;
 } */
 
+/* #map {
+	height: 100%;
+	width: 100%;
+	padding:100%;
+}  */
+/* body {
+	background-image: url("j.jpg");
+	 */
+	
+
+
+	
+  /* } */
+/* .bg-success {
+	--bs-bg-opacity: 1;
+	background-color: rgba(var(--bs-success-rgb), var(--bs-bg-opacity)) !important;
+}
 label {
 	padding: 0px 10px;
 	display: inline-block;
@@ -17,5 +46,14 @@ label {
 
 input {
 	font-size: 0.70em;
+	font-family: sans-serif;
 	padding: 9px;
+} */ 
+
+.container {
+    height: 50px;
+    max-width: 1010px;
+    margin: 2% auto;
+	background-color: rgb(21, 205, 237);
+
 }
