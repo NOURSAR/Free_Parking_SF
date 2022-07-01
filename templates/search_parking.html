@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block head %}{% endblock %}
+{% block body %}
+
+    <div class="container">
+      <label ><h4>Search parking in Database</h4></label>
+       <form class="container" id="searchdb" action="/search-parking">
+        Street Name: 
+        <input name ="streetname" type="text" placeholder="Street Name: Fell Street" required >
+        Cross Streets: 
+        <input   name ="cross-street1" type="text" placeholder="optional: Franklin">
+        <input   name ="cross-street2" type="text" placeholder="optional: California"><br>
+        <button form="searchdb" type="submit" class="btn btn-outline-primary">search</button>
+      </form> 
+    </div> 
+
+{% endblock %}
