@@ -2,10 +2,10 @@
 {% block title %} Log-In / Create Account {% endblock %}
 
 {% block content %}
-<body>
-      <div class="log-account">
+<body class="body">
+      <div class="container-fluid">
       <div class="log-in">
-          <h2 class="subheader">Log In</h2>
+          <h2 class="center">Log In</h2>
           <form method="POST" action="/login">      
               <div class="form-group">
                   <label for="search-keyword">Email</label>
@@ -27,12 +27,12 @@
                       required
                   >
               </div>
-              <input type="submit" value="Log In" class="btn" id="login-button">
+              <input type="submit" value="Log In" class="btn btn-primary" id="login-button">
           </form>
       </div>
 
       <div class="create-account">
-          <h2 class="subheader">Create Account</h2>
+          <h2 class="center">Create Account</h2>
 
           <form method="POST" action="/create-user">
               <div class="form-group">
@@ -55,7 +55,7 @@
                       required
                   >
               </div>
-              <input type="submit" value="Create Account" class="btn" id="login-button">
+              <input type="submit" value="Create Account" class="btn btn-success" id="login-button">
           </form>
       </div>
   </div>

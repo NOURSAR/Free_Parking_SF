@@ -1,16 +1,18 @@
 {% extends 'base.html' %}
-{% block head %}{% endblock %}
+<!-- {% block head %}{% endblock %} -->
 {% block body %}
 
-    <div class="container">
-      <label ><h4>Search parking in Database</h4></label>
-       <form class="container" id="searchdb" action="/search-parking">
-        Street Name: 
-        <input name ="streetname" type="text" placeholder="Street Name: Fell Street" required >
-        Cross Streets: 
-        <input   name ="cross-street1" type="text" placeholder="optional: Franklin">
-        <input   name ="cross-street2" type="text" placeholder="optional: California"><br>
-        <button form="searchdb" type="submit" class="btn btn-outline-primary">search</button>
+
+    <div class="container-fluid">
+       <form class='container-fluid' id="searchdb" action="/search-parking">
+        <h4 class="center">Search parking in Database</h4>
+
+        <div class="center"> *Street Name </div>
+        <input  class="col-sm-6" name ="streetname" type="text" placeholder="Street Name: Fell" required >
+        <div class="center">*Cross Streets </div>
+        <input  class="col-sm-6"  name ="cross-street1" type="text" placeholder="optional: Franklin">
+        <input   class="col-sm-6"  name ="cross-street2" type="text" placeholder="optional: California">
+        <button form="searchdb" type="submit" class="btn btn-primary">search</button>
       </form> 
     </div> 
 

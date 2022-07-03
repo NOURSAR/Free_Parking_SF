@@ -9,19 +9,17 @@
 <script  src="/static/all_parkings.js" > </script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDCLPu50m8qU4eQpqj7rm8U7i1gTa-s5TY&libraries=places&callback=initMap"></script><br>
 <label for="addreview">Select Street to Add a Review</label>
-<form id="addreview" method="POST" action="/add-review">
+<form class="container-fluid" id="addreview" method="POST" action="/add-review">
     <select name="parking_id" id="parking_id">
     {% for stname in all_parkings_stname %}
         <option name='{{stname.latitude}}' value='{{stname.parking_id}}'>{{ stname.address}}   {{stname.latitude}},{{stname.longtitude}}</option>
     {% endfor %}
           </select><br>
-            <input type="text" name="rev" placeholder="Type in a review" required>
+   <input  class="col-sm-6" type="text" name="rev" placeholder="Type in a review" required>
+   <button form="addreview" type="submit" class="btn btn-primary">review</button>
+
+   <h1>Click on markers to see reviews</h3>
+
+   <div class="ratio ratio-16x9" id="map"></div>
 </form>
-  <button form="addreview" type="submit" class="btn btn-outline-primary">review</button>
-
-<body>
-    <h1>Click on markers to see reviews</h3>
-      <div id="map"></div>
-</body>
-
 {% endblock %}

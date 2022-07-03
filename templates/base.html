@@ -5,35 +5,65 @@
   <meta name="viewport" content="width=device-width">
   <link rel="stylesheet" type="text/css" href="/static/style.css" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
- 
-  <head>
-    <nav class="navbar bg-light">
+ <!-- navbar -->
+  <head class="header">
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3">
       <div class="container">
-        <a class="navbar-brand" href="#">
+        <a heref="#" class="navbar-brand">
           <img src="/static/car.gif" alt="" width="30" height="24" class="d-inline-block align-text-top">
           Street Park SF
         </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navmenu">
+          <ul class="navbar-nav ms-auto">
+            {% if current_user.is_anonymous %}
+            <li class="nav-item">
+              <a href="/login-page" class="nav-link">Log In or Create Account</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+              <a href="/logout" class="nav-link">Log Out</a>
+            </li>
+            <li class="nav-item">
+              <a href="/add-parking" class="nav-link">Add Parking</a>
+            </li>
+            {% endif %}
+            <li class="nav-item">
+              <a href="/" class="nav-link">Search Parking</a>
+            </li>
+
+          </ul>
+        </div>
       </div>
     </nav>
-   
-    <nav class="navbar">
-      <div class="container">
-        {% if current_user.is_anonymous %}
-      <button class="btn btn-warning"><a href="/login-page">Log In or Create Account</a></button><br>
-        {% else %}
-        Welcome, {{ current_user.email }}!
-        <button class="btn btn-warning"><a href="/logout">Log Out</a></button>
-        <button class="btn btn-primary"><a href="/add-parking">Add Parking</a></button>
-        {% endif %}
-        <button class="btn btn-outline-light"><a href="/">Search Parking</a></button>
-    </nav>
-    <title>
+   <!-- showcase -->
+   <section class="bg-dark text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start">
+    <div class="container">
+      <div class="d-sm-flex align-items-center justify-content-between">
+        <div class="">
+          <h4>Search, Add and <span class="text-warning">Review</span> Parking Spots! </h4>
+            <img class="imag-fluid d-none d-sm-block" src="/static/car.gif" alt="" width="50" height="50" />
+        </div>
+      </div>
+    </div>
+   </section>
+   <section class="bg-info text-light p-5">
+    <div class="container">
+      <div class="d-md-flex justify-content-between align-items-center">
+        <h3 class="mb-3 mb-md-0"> Street Park San Francisco</h3>
+        <img  class="imag-fluid d-none d-sm-block" src="/static/j.jpg" alt="" width="50" height="50" >
+      </div>
+    </div>
+   </section>
+    <!-- <title>
       {% block title %}{% endblock %}
     </title>
-    {% block head %}{% endblock %}
+    {% block head %}{% endblock %} -->
   </head>
 
-  <body>
+  <body class="body">
     {% with messages = get_flashed_messages() %}
     {% if messages %}
       <div class=flashes>
@@ -46,7 +76,7 @@
     {% block content %}{% endblock %}
     {% block body %} {% endblock %}
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
 
   </body>
 

@@ -72,10 +72,15 @@ def search_parking():
             return render_template('all_parkings.html',  all_parkings_stname=all_parkings_stname, allofmarkers=allofmarkers)
        
         else:
-            flash("Parking is not in database. You can add to Database by submitting a parking spot.")
-            print("Parking is not in database")
-            return render_template('add_parking.html')
-    
+            if 'email' in session:
+            # if id is not None:
+              flash(id)
+              flash("Parking is not in database. You can add to Database by submitting a parking spot.")
+              print("Parking is not in database")
+              return render_template('add_parking.html')
+            else:
+                flash("Parking is not in database. Login to add aparking spot")
+                return redirect('/login-page')
     if len(cross_streets) == 1:
         flash("Please enter 2 cross streets or NO cross streets.")
         return render_template("search_parking.html")
@@ -109,9 +114,15 @@ def search_parking():
             return render_template('all_parkings.html', all_parkings_stname = all_parkings_stname, allofmarkers=allofmarkers) 
 
         else:
-            flash("Parking is not in database. You can add to Database by submitting a parking space.")
-            print("Parking is not in database")
+            if "email" not in session:
+            # if id == None:
+                print(id)
+                flash("Parking is not in database, please log in to add parking spot")
+                print("Parking is not in database")
+                return redirect('/login-page')
+
             return render_template('add_parking.html')
+            # return redirect('/login-page')
     
     
 
@@ -137,7 +148,7 @@ def add_parking():
 
     if all_parkings_coords != None: #checking if filtered lat and lng in database
         flash("parking spot already exists")
-        # print(" parking spot already exists")
+        print(" parking spot already exists")
         return render_template("add_parking.html")
     else: #if parking is not in database:
       print("parking is not in database") 
@@ -150,28 +161,28 @@ def add_parking():
             parking = crud.create_parking(st_name=main_street, longtitude=lat, latitude=lng, cross_st_2=cross_streets[0], cross_st_1=cross_streets[1], address=address) #if user in session create the parking
             all_parkings_stname=Parking.query.filter(Parking.st_name.contains(main_street) == True).all()
            # markers_reviews= Parking.query.filter(Parking.st_name.contains(main_street) == True).all()
-
-        if all_parkings_stname:
-            print("parking objects are in database")
-            allofmarkers=[]
-            for marker in all_parkings_stname:
-                key = "street"
-                marker_id =marker.parking_id
-                coords=[marker.latitude, marker.longtitude]
-                streetname=marker.st_name
-                address= marker.address
-                k=Review.query.join(Parking).filter(Parking.parking_id == marker_id).all()
-                list_of_marker_reviews = ""
-                for review in k:
-                    if review.review == None:
-                        # review.review = "-no review yet"
-                        list_of_marker_reviews= "No review yet"
-                    else:
-                        list_of_marker_reviews = list_of_marker_reviews+  "  -" +  review.review
-                value= streetname, list_of_marker_reviews, marker_id, coords, address
-                creatObject={key:value}
-                allofmarkers.append(creatObject)
-            return render_template("all_parkings.html",all_parkings_stname=all_parkings_stname, allofmarkers=allofmarkers, parking=parking) #return all parkings with street name
+        
+            if all_parkings_stname:
+                print("parking objects are in database")
+                allofmarkers=[]
+                for marker in all_parkings_stname:
+                    key = "street"
+                    marker_id =marker.parking_id
+                    coords=[marker.latitude, marker.longtitude]
+                    streetname=marker.st_name
+                    address= marker.address
+                    k=Review.query.join(Parking).filter(Parking.parking_id == marker_id).all()
+                    list_of_marker_reviews = ""
+                    for review in k:
+                        if review.review == None:
+                            # review.review = "-no review yet"
+                            list_of_marker_reviews= "No review yet"
+                        else:
+                            list_of_marker_reviews = list_of_marker_reviews+  "  -" +  review.review
+                    value= streetname, list_of_marker_reviews, marker_id, coords, address
+                    creatObject={key:value}
+                    allofmarkers.append(creatObject)
+                return render_template("all_parkings.html",all_parkings_stname=all_parkings_stname, allofmarkers=allofmarkers, parking=parking) #return all parkings with street name
 
         else: #if user not in session
             print("user not in session")
@@ -183,8 +194,13 @@ def add_review():
     rev = request.form.get('rev')
     parking_id= request.form.get('parking_id')
     print(parking_id)
+
+    
+    print(id)
+    
     if parking_id == None:
-        return redirect("/")
+        if rev== None:
+           return redirect("/")
     else:
         parking= crud.get_parking_by_parking_id(parking_id)
         print(rev)
@@ -192,10 +208,7 @@ def add_review():
         email=session.get('email')
         user = crud.get_user_by_email(email)
         review = crud.create_review(rev, user, parking)
-        if 'email' not in session:
-            return redirect('/login-page')
-        else:
-           return render_template('review_thankyou.html', review = review.review, email=email)
+        return render_template('review_thankyou.html', review = review.review, email=email)
     #have review_thankyou.html thank user for review, show them review, add links giving user choice to add another parking spot/review or search again
 
 @app.route('/login-page')

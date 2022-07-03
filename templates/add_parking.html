@@ -2,31 +2,32 @@
 {% block title %} Free Parking Search {% endblock %}
 
 {% block body %}
-<body>
-    <div class="container">
-        <h2>Add Parking Spot to Database</h2>
-            <form class="container" id = "addparking" method="POST" action="/add-parking">
-                <div class="form-group row">Street Name:                       
-                    <input  name ="street" type="text"  id="info_street" placeholder="Click on map & marker" required>
-                </div>
-                <div class="form-group row">
+    <body class="body" >
+        
+            <form class="container-fluid" id = "addparking" method="POST" action="/add-parking">
+                <h5 class="center">Add Parking Spot to Database</h5>
+
+                <div class="center">*Street Name: </div>
+                    
+                    <input  class="col-sm-6" name ="street" type="text"  id="info_street" placeholder="Click on map & marker" required>
+                <!-- </div> -->
+                <div class="center">*latitude and longtitude</div>
                     <input class="col-sm-6" name="lat" type="text" id="info_lat"  placeholder="Lat: Click on map & marker"  required>
                     <input class="col-sm-6" name="lng" type="text" id="info_lng" placeholder="Lng: Click on map & marker"  required>
-                 </div>
-                <div class="form-group row">
+                <div class="center">*Cross Streets</div>
+                
                     <input class="col-sm-6" name ="cross-street1" type="text" placeholder="Type in cross_street A" required >
                     <input class="col-sm-6"  name ="cross-street2" type="text" placeholder="Type in cross_street B" required>
-                </div>
-                <div class="form-group row">Address:  
-                    <input  name="address" type="text" id="info_address" placeholder="Address: Click on map & marker" required>
-                </div>
+                <div class="center">*Address </div>
+
+                    <input class="col-sm-6" name="address" type="text" id="info_address" placeholder="Address: Click on map & marker" required>
+                <div class="col"> 
+                <div class="ratio ratio-16x9" id="map"></div></div>
+                <button  class="btn btn-primary" form= "addparking" type="submit" >submit</button>  
+
             </form>
-        <button form= "addparking" type="submit" >submit</button>  
-        <div class="ratio ratio-16x9" id="map"></div>
-    </div> 
-
-</body>
-
+        <!-- <button form= "addparking" type="submit" >submit</button>   -->
+        <!-- <div class="ratio ratio-16x9" id="map"></div> -->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?&key=AIzaSyDCLPu50m8qU4eQpqj7rm8U7i1gTa-s5TY"></script>
 <script type="text/javascript">
@@ -91,6 +92,6 @@
         // document.getElementById('info_street').value=street;
     });
 };
-</script>    
-
+</script>
+</body>    
 {% endblock %}

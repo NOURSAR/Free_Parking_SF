@@ -1,59 +1,75 @@
 /* html {
-	height: 100%;
-	margin-top: 100%;
-	padding: 100%;
-	background-image: url("j.jpg");
-
-} */
-/* .header-container-fluid {
-    height: 50px;
+	background-attachment: url('/static/moza.jpg');
+}
+.container-fluid {
+	height: 50px;
     max-width: 1010px;
-    margin: 0 auto;
+    margin: 5%;
+
 }
-.navbar-static-top {
-    margin: 0 auto;
-    border: none; */
-    /* width: 100%;
-    background-image: url(../images/header_bg.jpg);
-    background-repeat: repeat-x;
-    background-position: left top;
-    position: fixed;
-    top: 0;
-} */
-
-/* #map {
-	height: 100%;
-	width: 100%;
-	padding:100%;
-}  */
-/* body {
-	background-image: url("j.jpg");
-	 */
-	
-
-
-	
-  /* } */
-/* .bg-success {
-	--bs-bg-opacity: 1;
-	background-color: rgba(var(--bs-success-rgb), var(--bs-bg-opacity)) !important;
-}
-label {
-	padding: 0px 10px;
-	display: inline-block;
-	font-size: 1.5em;
-}
-
-input {
-	font-size: 0.70em;
+.center{
 	font-family: sans-serif;
-	padding: 9px;
-} */ 
+    color: #47B5FF;
+	font-weight: bold;
+	/* width: 500px; */
+	/* margin: 0 auto; */
+/* } */
 
-.container {
-    height: 50px;
-    max-width: 1010px;
-    margin: 2% auto;
-	background-color: rgb(21, 205, 237);
 
+/* input { */
+	/* font-size: 20em; */
+	/* font-family: sans-serif; */
+	/* padding: 9px; */
+	/* font-weight: normal; */
+/* }  */
+/* .navbar.bg-light {
+	font-family: sans-serif;
+    font-weight: bolder;
+    /* max-width: auto; */
+    /* margin: auto; */
+	/* color: rgb(2, 2, 21); */
+	/* background-color: #ffffff; */
+	/* background-image: url("/static/"); */
+
+/* } */ 
+/* .span {
+	color: #1363DF;
 }
+.create-account, .log-in, .form-group,.btn {
+	font-family: sans-serif;
+    font-weight: bold;
+    /* max-width: auto; */
+    /* margin: auto; */
+	/* color: rgb(0, 0, 0); */
+
+/* } */ 
+/* .container { */
+    /* height: 50px;
+    max-width: 1010px;
+    margin: 5%;
+	background-color: rgb(255, 255, 255);
+
+} */
+/* .header { */
+	/* font-family: sans-serif; */
+/* } */
+/* .body {
+	/* background-image: url("/static/moza.jpg"); */
+	/* background-color: #06283D; */
+	/* display: inline; */
+/* }  */
+/* .col {
+	background-color: #DFF6FF;
+	display: block;
+} */
+
+/* .col-sm-6 { */
+  /* display: flex; */
+  /* width: 200px; */
+  /* margin: 1%; */
+  /* color: white; */
+  /* background-color: #DFF6FF; */
+/* }
+.flashes {
+	align-items: center;
+} */
