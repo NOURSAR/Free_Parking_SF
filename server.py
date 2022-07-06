@@ -58,13 +58,15 @@ def search_parking():
                 streetname=marker.st_name
                 address= marker.address
                 k=Review.query.join(Parking).filter(Parking.parking_id == marker_id).all()
-                list_of_marker_reviews = ""
+                list_of_marker_reviews = {"review": []}
+                # list_of_marker_reviews=""
                 for review in k:
                     if review.review == None:
                         review.review = "no review yet"
                         list_of_marker_reviews=list_of_marker_reviews+ review.review
                     else:
-                        list_of_marker_reviews = list_of_marker_reviews+  "  -" +  review.review
+                        list_of_marker_reviews["review"].append(review.review)
+                        # list_of_marker_reviews = list_of_marker_reviews+  "  -" +  review.review
                 value= streetname, list_of_marker_reviews, marker_id, coords, address
                 creatObject={key:value}
                 allofmarkers.append(creatObject)

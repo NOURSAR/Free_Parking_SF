@@ -2,18 +2,13 @@
 {% block title %} Free Parking Search {% endblock %}
 
 {% block body %}
-<section class="bg-warning text-light p-1">
-    <div class="container">
-      <div class="d-md-flex justify-content-between align-items-center">
-        <h3 class="mb-3 mb-md-0"> Add Parking Spot to Database</h3>
-      </div>
-    </div>
-</section>
+
 <section class="p-3 gg-dark">
     <div class="container">
         <div class="row align-items-center justify-content-between">
             <div class="col-md p5">
-                <form class="form-control" 
+                <h2 class="center">Add Parking Spot</h2>
+                <form class="form-control border border-dark" 
                     id = "addparking" 
                     method="POST" 
                     action="/add-parking">
@@ -23,7 +18,7 @@
                             type="text"  
                             id="info_street" 
                             placeholder="Street Name" required>
-                    <div class="center">*latitude and longtitude</div>
+                    <div class="center">*Latitude and Longtitude</div>
                         <input  class="form-control"
                                 name="lat" 
                                 type="text" 
@@ -54,8 +49,8 @@
                 <button  class="btn btn-primary d-grid gap-2 col-6" form= "addparking" type="submit" >submit</button>
             </div>
             <div class="col-md">
-                <h6 class="text-bg-danger p-0 pt-0">Click on Map and Marker</h6>
-                <div class="ratio ratio-16x9" id="map">                        
+                <h6 class="rounded text-bg-danger p-1 p-1">Click on Map and Marker</h6>
+                <div class="rounded ratio ratio-16x9 border border-dark p-2" id="map">                        
                 </div>
             </div>
         </div>

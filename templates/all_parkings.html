@@ -8,53 +8,62 @@
 <script  src="/static/all_parkings.js" ></script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDCLPu50m8qU4eQpqj7rm8U7i1gTa-s5TY&libraries=places&callback=initMap"></script>
 
-<section class="bg-warning text-light p-2">
-  <div class="container">
-    <div class="d-md-flex justify-content-between align-items-center">
-      <h3 class="mb-3 mb-md-0"> Select Street to Add a Review</h3>
-    </div>
-  </div>
-</section>
-
 <section class="p-5 gg-dark">
   <div class="container">
     <div class="row align-items-center justify-content-between">
       <div class="col-md">
-        {% if not current_user.is_anonymous %}
-      <form class="form-control" 
-      id="addreview" 
-      method="POST" 
-      action="/add-review">
-      <select class="form-select" name="parking_id" id="parking_id">
-          {% for stname in all_parkings_stname %}
-          <option name='{{stname.latitude}}' 
-            value='{{stname.parking_id}}'>
-            {{stname.address}}
-          </option>
-          {% endfor %}
-      </select>
-      <div class="form-floating">
-        <textarea class="form-control" name="rev" placeholder="Leave a review here" style="height: 100px"></textarea>
+        <h6 class="rounded text-bg-danger p-1 pt-1">Click on markers to see reviews</h6>
+          <div class="rounded ratio ratio-16x9 border border-dark" id="map"></div>
       </div>
+      <div class="col-md">
+        <h4 class="center">Select Street to Add a Review</h4>
+        {% if not current_user.is_anonymous %}
+        <form class="form-control border border-dark" 
+          id="addreview" 
+          method="POST" 
+          action="/add-review">
+          <select 
+            class="form-select border border-dark" 
+            name="parking_id" 
+            id="parking_id">
+            {% for stname in all_parkings_stname %}
+            <option name='{{stname.latitude}}' 
+              value='{{stname.parking_id}}'>
+              {{stname.address}}
+            </option>
+            {% endfor %}
+          </select>
+          <div class="form-floating">
+            <textarea class="form-control border border-dark" 
+              name="rev" 
+              placeholder="Leave a review here" 
+              style="height: 100px" required id="floatingTextarea"></textarea>
+              <label for="floatingTextarea">Review</label>
+          </div>
         <!-- <input class="col-sm-6" 
           type="text" 
           name="rev" 
           placeholder="Type in a review" 
           required> -->
-      <button form="addreview" type="submit" class="btn btn-primary">review</button>
-    </form>
-     {% else %}
-     {% for stname in all_parkings_stname %}
-     {{stname.address}}
-     please sign in to add a review!
-     {% endfor %}
-
-    {% endif %}
-  </div>
-  <div class="col-md">
-    <h3>Click on markers to see reviews</h3>
-    <div class="ratio ratio-16x9" id="map"></div>
-  </div>
+          <button form="addreview" type="submit" class="btn btn-primary d-grid gap-2 col-6">review</button>
+        </form>
+        {% else %}
+        <div>
+          <select 
+            class="form-select border border-dark" 
+            name="parking_id" 
+            id="parking_id">
+            {% for stname in all_parkings_stname %}
+            <option name='{{stname.latitude}}' 
+              value='{{stname.parking_id}}'>
+            {{stname.address}}
+            </option>
+          </select>
+        </div>
+        <div  class="text-secondary d-md-flex text-sm-end">please sign in to add a review!</div>
+          {% endfor %}
+        {% endif %}
+      </div>
     </div>
   </div>
 </section>
