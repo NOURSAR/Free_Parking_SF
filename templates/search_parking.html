@@ -1,19 +1,46 @@
 {% extends 'base.html' %}
 <!-- {% block head %}{% endblock %} -->
 {% block body %}
-
-
-    <div class="container-fluid">
-       <form class='container-fluid' id="searchdb" action="/search-parking">
-        <h4 class="center">Search parking in Database</h4>
-
-        <div class="center"> *Street Name </div>
-        <input  class="col-sm-6" name ="streetname" type="text" placeholder="Street Name: Fell" required >
-        <div class="center">*Cross Streets </div>
-        <input  class="col-sm-6"  name ="cross-street1" type="text" placeholder="optional: Franklin">
-        <input   class="col-sm-6"  name ="cross-street2" type="text" placeholder="optional: California">
-        <button form="searchdb" type="submit" class="btn btn-primary">search</button>
-      </form> 
-    </div> 
-
+<section class="bg-warning text-light p-1">
+ <div class="container">
+   <div class="d-md-flex justify-content-between align-items-center">
+     <h3 class="mb-3 mb-md-0"> Search parking in Database</h3>
+   </div>
+ </div>
+</section>
+<section class="p-5 gg-dark">
+  <div class="container">
+    <div class="row align-items-center justify-content-between">
+      <div class="col-md p-5">
+        <form 
+          class='form-control'
+          id="searchdb" 
+          action="/search-parking">
+          <div class="center"> *Street Name </div>
+            <input  
+              class="form-control"
+              name ="streetname" 
+              type="text" 
+              placeholder="Street Name: Fell"
+              required >
+          <div class="center">*Cross Streets </div>
+            <input  
+              class="form-control" 
+              name ="cross-street1" 
+              type="text" 
+              placeholder="optional: Franklin">
+            <input   
+              class="form-control"
+              name ="cross-street2" 
+              type="text" 
+              placeholder="optional: California">
+        </form>
+      <button form="searchdb" 
+        type="submit" 
+        class="btn btn-primary d-grid gap-2 col-6">search</button>
+    </div>
+    <div class="col-md"> <img  src="/static/j.jpg" alt="" height="60%" width="60%"> </div>
+    </div>
+  </div> 
+</section>
 {% endblock %}

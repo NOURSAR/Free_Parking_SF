@@ -1,13 +1,16 @@
 {% extends 'base.html' %}
 {% block head %}{% endblock %}
 {% block body %}
-<body class="body">
-<div class="container-fluid">
-<h4> Thank You ({{email}}) for Your review:</h4>
-    <h5 >{{review}}</h5>
-<a href="/"> Search Parking</a>
-<a href="/add-parking"> Add Parking</a>
-</div>
-</body>
-
+<section class="bg-warning text-light p-1">
+    <div class="container">
+        <h4> Thank You <span class="text-danger">{{email}}</span> for Your review!</h4>
+    </div>
+</section>
+<section class="p-5 gg-dark">
+    <div class="container">
+        <h5 >{{review}}</h5>
+            <a href="/"> Search Parking</a>
+            <a href="/add-parking"> Add Parking</a>
+    </div>
+</section>
 {% endblock %}

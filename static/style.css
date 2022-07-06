@@ -1,3 +1,10 @@
+body::before{
+	display:  block;
+	content: "";
+	height: 60px;
+}
+
+
 /* html {
 	background-attachment: url('/static/moza.jpg');
 }
@@ -7,14 +14,15 @@
     margin: 5%;
 
 }
+/*  */
 .center{
 	font-family: sans-serif;
-    color: #47B5FF;
-	font-weight: bold;
+    color: black;
+	font-weight: bold; 
 	/* width: 500px; */
 	/* margin: 0 auto; */
-/* } */
-
+}
+/*  */
 
 /* input { */
 	/* font-size: 20em; */

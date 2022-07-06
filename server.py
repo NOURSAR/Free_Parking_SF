@@ -153,7 +153,7 @@ def add_parking():
     else: #if parking is not in database:
       print("parking is not in database") 
       if main_street == None:
-        flash("Please fill up the following form to submit a parking spot")
+        # flash("Please fill up the following form to submit a parking spot")
         return render_template("add_parking.html")
       else:
         if "email" in session: #first we going to check if there is a user in session:
