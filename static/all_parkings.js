@@ -1,16 +1,5 @@
 
 allOfMarkers=JSON.parse(allOfMarkers)
-for (var i=0; i<allOfMarkers.length;i++){
-  var markerObject = allOfMarkers[i]['street'];
-  for (var e=0; e<markerObject[1]['review'].length;e++){
-    var allReviews=markerObject[1]['review'][e];
-    console.log(allReviews)
-
-    };
-    // console.log(allReviews)
-
-}
-// console.log(myVar)
 
 function initMap() {
   var mapOptions = {
@@ -25,16 +14,8 @@ function initMap() {
 
     for (var i=0; i<allOfMarkers.length;i++){
       var markerObject = allOfMarkers[i]['street'];
-      var allR=""
-      for (var e=0; e<markerObject[1]['review'].length;e++){
-        var allReviews=markerObject[1]['review'][e];
-        console.log(allReviews[0].val)
-        allR = allR+ " \r\n@" +allReviews
-        };
-      console.log(allR)
-
+      var review = markerObject[1];
       var streetName = markerObject[0];
-      // console.log(review)
       var lng = markerObject[3][0];
       var lat = markerObject[3][1];
       var latlng = {lat: lat, lng: lng};
@@ -45,7 +26,7 @@ function initMap() {
         optimized: false,
         title: address,
         draggable: true,
-        content: allR,
+        content: review,
       });
 
         //Attach click event to the marker.

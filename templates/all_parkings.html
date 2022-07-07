@@ -30,8 +30,8 @@
             <option name='{{stname.latitude}}' 
               value='{{stname.parking_id}}'>
               {{stname.address}}
-            </option>
             {% endfor %}
+            </option>
           </select>
           <div class="form-floating">
             <textarea class="form-control border border-dark" 
@@ -40,28 +40,22 @@
               style="height: 100px" required id="floatingTextarea"></textarea>
               <label for="floatingTextarea">Review</label>
           </div>
-        <!-- <input class="col-sm-6" 
-          type="text" 
-          name="rev" 
-          placeholder="Type in a review" 
-          required> -->
           <button form="addreview" type="submit" class="btn btn-primary d-grid gap-2 col-6">review</button>
-        </form>
-        {% else %}
-        <div>
+          {% else %}
           <select 
-            class="form-select border border-dark" 
+            class="form-select border border-dark"  
             name="parking_id" 
             id="parking_id">
             {% for stname in all_parkings_stname %}
             <option name='{{stname.latitude}}' 
               value='{{stname.parking_id}}'>
-            {{stname.address}}
+              {{stname.address}}
             </option>
+            {% endfor %}
           </select>
-        </div>
+
+        </form>
         <div  class="text-secondary d-md-flex text-sm-end">please sign in to add a review!</div>
-          {% endfor %}
         {% endif %}
       </div>
     </div>

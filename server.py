@@ -58,15 +58,15 @@ def search_parking():
                 streetname=marker.st_name
                 address= marker.address
                 k=Review.query.join(Parking).filter(Parking.parking_id == marker_id).all()
-                list_of_marker_reviews = {"review": []}
-                # list_of_marker_reviews=""
+                # list_of_marker_reviews = {"review": []}
+                list_of_marker_reviews=""
                 for review in k:
                     if review.review == None:
                         review.review = "no review yet"
                         list_of_marker_reviews=list_of_marker_reviews+ review.review
                     else:
-                        list_of_marker_reviews["review"].append(review.review)
-                        # list_of_marker_reviews = list_of_marker_reviews+  "  -" +  review.review
+                        # list_of_marker_reviews["review"].append(review.review)
+                        list_of_marker_reviews = list_of_marker_reviews+  "  @" +  review.review
                 value= streetname, list_of_marker_reviews, marker_id, coords, address
                 creatObject={key:value}
                 allofmarkers.append(creatObject)
@@ -155,7 +155,7 @@ def add_parking():
     else: #if parking is not in database:
       print("parking is not in database") 
       if main_street == None:
-        # flash("Please fill up the following form to submit a parking spot")
+        flash("Please fill up the following form to submit a parking spot")
         return render_template("add_parking.html")
       else:
         if "email" in session: #first we going to check if there is a user in session:
@@ -180,11 +180,11 @@ def add_parking():
                             # review.review = "-no review yet"
                             list_of_marker_reviews= "No review yet"
                         else:
-                            list_of_marker_reviews = list_of_marker_reviews+  "  -" +  review.review
+                            list_of_marker_reviews = list_of_marker_reviews+  "  @" +  review.review
                     value= streetname, list_of_marker_reviews, marker_id, coords, address
                     creatObject={key:value}
                     allofmarkers.append(creatObject)
-                return render_template("all_parkings.html",all_parkings_stname=all_parkings_stname, allofmarkers=allofmarkers, parking=parking) #return all parkings with street name
+            return render_template("all_parkings.html",all_parkings_stname=all_parkings_stname, allofmarkers=allofmarkers, parking=parking) #return all parkings with street name
 
         else: #if user not in session
             print("user not in session")
