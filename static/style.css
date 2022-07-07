@@ -4,17 +4,6 @@ body::before{
 	height: 60px;
 }
 
-
-/* html {
-	background-attachment: url('/static/moza.jpg');
-}
-.container-fluid {
-	height: 50px;
-    max-width: 1010px;
-    margin: 5%;
-
-}
-/*  */
 .center{
 	font-family: sans-serif;
     color: black;
@@ -22,62 +11,7 @@ body::before{
 	/* width: 500px; */
 	/* margin: 0 auto; */
 }
-/*  */
 
-/* input { */
-	/* font-size: 20em; */
-	/* font-family: sans-serif; */
-	/* padding: 9px; */
-	/* font-weight: normal; */
-/* }  */
-/* .navbar.bg-light {
-	font-family: sans-serif;
-    font-weight: bolder;
-    /* max-width: auto; */
-    /* margin: auto; */
-	/* color: rgb(2, 2, 21); */
-	/* background-color: #ffffff; */
-	/* background-image: url("/static/"); */
-
-/* } */ 
-/* .span {
-	color: #1363DF;
-}
-.create-account, .log-in, .form-group,.btn {
-	font-family: sans-serif;
-    font-weight: bold;
-    /* max-width: auto; */
-    /* margin: auto; */
-	/* color: rgb(0, 0, 0); */
-
-/* } */ 
-/* .container { */
-    /* height: 50px;
-    max-width: 1010px;
-    margin: 5%;
-	background-color: rgb(255, 255, 255);
-
-} */
-/* .header { */
-	/* font-family: sans-serif; */
-/* } */
-/* .body {
-	/* background-image: url("/static/moza.jpg"); */
-	/* background-color: #06283D; */
-	/* display: inline; */
-/* }  */
-/* .col {
-	background-color: #DFF6FF;
-	display: block;
-} */
-
-/* .col-sm-6 { */
-  /* display: flex; */
-  /* width: 200px; */
-  /* margin: 1%; */
-  /* color: white; */
-  /* background-color: #DFF6FF; */
-/* }
-.flashes {
+/* .flashes {
 	align-items: center;
 } */
