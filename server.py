@@ -31,7 +31,7 @@ def homepage():
 
 @app.route('/search-parking')
 def search_parking():
-    main_street= request.args.get('streetname').capitalize()
+    main_street= request.args.get('streetname')
     cross_street1=request.args.get('cross-street1')
     cross_street2=request.args.get('cross-street2')
 
@@ -76,8 +76,7 @@ def search_parking():
         else:
             if 'email' in session:
             # if id is not None:
-              flash(id)
-              flash("Parking is not in database. You can add to Database by submitting a parking spot.")
+              flash("No cross Streets. Parking is not in database. You can add to Database by submitting a parking spot.")
               print("Parking is not in database")
               return render_template('add_parking.html')
             else:
@@ -92,8 +91,8 @@ def search_parking():
     # if cross_street1 and cross_street2:
         #then query for parking objects that match all three columns
         all_parkings_stname=Parking.query.filter_by(st_name=main_street, cross_st_1=cross_street1, cross_st_2=cross_street2).all()
-
-        print(all_parkings_stname)
+        # all_parkings_stname= Parking.query.filter_by(Parking.st_name.contains(main_street), cross_st_1=cross_street1,cross_st_2=cross_street2).all()
+        print(all_parkings_stname, "LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL")
         if all_parkings_stname:
             print("parking objects are in database")
             allofmarkers=[]
@@ -109,7 +108,7 @@ def search_parking():
                     if review.review == None:
                         review.review = "-no review yet"
                     else:
-                        list_of_marker_reviews = list_of_marker_reviews+  "  -" +  review.review
+                        list_of_marker_reviews = list_of_marker_reviews+  "  @" +  review.review
                 value= streetname, list_of_marker_reviews, marker_id, coords, address 
                 creatObject={key:value}
                 allofmarkers.append(creatObject)
@@ -118,11 +117,10 @@ def search_parking():
         else:
             if "email" not in session:
             # if id == None:
-                print(id)
-                flash("Parking is not in database, please log in to add parking spot")
+                flash("2 cross streets. Parking is not in database, please log in to add parking spot")
                 print("Parking is not in database")
                 return redirect('/login-page')
-
+            flash("2 cross streets not in database")
             return render_template('add_parking.html')
             # return redirect('/login-page')
     
@@ -290,9 +288,9 @@ def logout():
 if __name__ == "__main__":
     connect_to_db(app)
     app.run(
-        host="0.0.0.0",
-        use_reloader=True,
-        use_debugger=True,
+        # host="0.0.0.0",
+        # use_reloader=True,
+        # use_debugger=True,
     )
 
     # sudo pg_ctlcluster 13 main start

@@ -4,7 +4,7 @@ allOfMarkers=JSON.parse(allOfMarkers)
 function initMap() {
   var mapOptions = {
         center: new google.maps.LatLng(37.77986, -122.42905),
-        zoom: 13,
+        zoom: 12,
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };
     var map = new google.maps.Map(document.getElementById("map"), mapOptions);
@@ -32,7 +32,7 @@ function initMap() {
         //Attach click event to the marker.
         (function (marker, markerObject) {
             google.maps.event.addListener(marker, "click", function (e) {
-                infoWindow.setContent( marker.content);
+                infoWindow.setContent( streetName +": "+ marker.content);
                 infoWindow.open(map, marker);
             });
         })(marker, markerObject);
