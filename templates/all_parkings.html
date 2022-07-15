@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block body %}
 
-<!--does not seem to do anything?? --><script type="text/javascript" {{ url_for('static', filename='app.js')}}></script> 
+<!-- <script type="text/javascript" {{ url_for('static', filename='app.js')}}></script>  -->
 </script>
 <script type="text/javascript"> var allOfMarkers ='{{ allofmarkers|tojson|safe }}'   
 </script>
@@ -16,7 +16,7 @@
           <div class="rounded ratio ratio-16x9 border border-dark" id="map"></div>
       </div>
       <div class="col-md">
-        <h4 class="center">Select Street to Add a Review</h4>
+        <h4 class="center">Select Address to Add a Review</h4>
         {% if not current_user.is_anonymous %}
         <form class="form-control border border-dark" 
           id="addreview" 

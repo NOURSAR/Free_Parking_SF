@@ -1,5 +1,6 @@
 
 allOfMarkers=JSON.parse(allOfMarkers)
+console.log(allOfMarkers)
 
 function initMap() {
   var mapOptions = {
@@ -14,8 +15,9 @@ function initMap() {
 
     for (var i=0; i<allOfMarkers.length;i++){
       var markerObject = allOfMarkers[i]['street'];
-      var review = markerObject[1];
       var streetName = markerObject[0];
+      var review = markerObject[1];
+      var review = markerObject[1];
       var lng = markerObject[3][0];
       var lat = markerObject[3][1];
       var latlng = {lat: lat, lng: lng};

@@ -32,13 +32,14 @@ def homepage():
 @app.route('/search-parking')
 def search_parking():
     main_street= request.args.get('streetname')
+    print(main_street, "NOOOOOOOOOOOOOOOOOOOOOOOOOOO")
     cross_street1=request.args.get('cross-street1')
     cross_street2=request.args.get('cross-street2')
 
     cross_streets = []
     if cross_street1 != "":
         cross_streets.append(cross_street1)
-    if cross_street2 != "":
+    if cross_street2 != "":  
         cross_streets.append(cross_street2)
     cross_streets = sorted(cross_streets)
     
@@ -47,11 +48,13 @@ def search_parking():
         #then query for all parking objects that match st_name
         all_parkings_stname=Parking.query.filter(Parking.st_name.contains(main_street) == True).all()
         # markers_reviews= Parking.query.filter(Parking.st_name.contains(main_street) == True).all()
+        print(all_parkings_stname, "LOLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL")
 
         if all_parkings_stname:
             print("parking objects are in database")
             allofmarkers=[]
             for marker in all_parkings_stname:
+                print(marker, "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM")
                 key = "street"
                 marker_id =marker.parking_id
                 coords=[marker.latitude, marker.longtitude]
@@ -101,15 +104,16 @@ def search_parking():
                 marker_id =marker.parking_id
                 coords=[marker.latitude, marker.longtitude]
                 streetname=marker.st_name
-                address=marker.address
+                address= marker.address
                 k=Review.query.join(Parking).filter(Parking.parking_id == marker_id).all()
                 list_of_marker_reviews = ""
                 for review in k:
                     if review.review == None:
-                        review.review = "-no review yet"
+                        # review.review = "-no review yet"
+                        list_of_marker_reviews= "No review yet"
                     else:
                         list_of_marker_reviews = list_of_marker_reviews+  "  @" +  review.review
-                value= streetname, list_of_marker_reviews, marker_id, coords, address 
+                value= streetname, list_of_marker_reviews, marker_id, coords, address
                 creatObject={key:value}
                 allofmarkers.append(creatObject)
             return render_template('all_parkings.html', all_parkings_stname = all_parkings_stname, allofmarkers=allofmarkers) 
@@ -291,4 +295,3 @@ if __name__ == "__main__":
 
     # sudo pg_ctlcluster 13 main start
     # kill -9 $(ps -A | grep python | awk '{print $1}') 
- 
